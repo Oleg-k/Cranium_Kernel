@@ -40,7 +40,6 @@ int put_io_context(struct io_context *ioc)
 
 	if (atomic_long_dec_and_test(&ioc->refcount)) {
 		rcu_read_lock();
-
 		hlist_sched_dtor(ioc, &ioc->cic_list);
 		hlist_sched_dtor(ioc, &ioc->bfq_cic_list);
 		rcu_read_unlock();
