@@ -54,6 +54,8 @@
 #define VDD_RAW(mv) (((MV(mv) / V_STEP) - 30) | VREG_DATA)
 
 #define MAX_AXI_KHZ 192000
+#define SEMC_ACPU_MIN_UV_MV 750U
+#define SEMC_ACPU_MAX_UV_MV 1525U
 
 extern int charging_boot;
 #define LPM_LOW_CPU_CLK 245760
@@ -135,7 +137,7 @@ static struct clkctl_acpu_speed acpu_freq_tbl[] = {
 	{ 1516800, PLL_2, 3, 0, 192000000, 1250, VDD_RAW(1250) },
 	{ 1612800, PLL_2, 3, 0, 192000000, 1275, VDD_RAW(1275) },
 	{ 1708800, PLL_2, 3, 0, 192000000, 1300, VDD_RAW(1300) },
-	{ 1804800, PLL_2, 3, 0, 192000000, 1325, VDD_RAW(1325) },
+	{ 1804800, PLL_2, 3, 0, 192000000, 1300, VDD_RAW(1300) },
 	{ 0 }
 };
 
