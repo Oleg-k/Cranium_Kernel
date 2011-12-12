@@ -897,7 +897,7 @@ ath5k_eeprom_convert_pcal_info_5112(struct ath5k_hw *ah, int mode,
 			return -ENOMEM;
 
 		/* Fill pd_curves */
-		for (pdg = 0; pdg < ee->ee_pd_gains[mode]; pdg++) {
+		for (pdg = 0; pdg < AR5K_EEPROM_N_PD_CURVES; pdg++) {
 
 			u8 idx = pdgain_idx[pdg];
 			struct ath5k_pdgain_info *pd =
@@ -1596,10 +1596,8 @@ ath5k_eeprom_free_pcal_info(struct ath5k_hw *ah, int mode)
 			struct ath5k_pdgain_info *pd =
 					&chinfo[pier].pd_curves[pdg];
 
-			if (pd != NULL) {
 				kfree(pd->pd_step);
 				kfree(pd->pd_pwr);
-			}
 		}
 
 		kfree(chinfo[pier].pd_curves);
