@@ -1384,7 +1384,9 @@ struct super_block {
 	 * generic_show_options()
 	 */
 	char *s_options;
-
+        /*
+        * Saved pool identifier for cleancache (-1 means none)
+        */
         int cleancache_poolid;
 };
 
