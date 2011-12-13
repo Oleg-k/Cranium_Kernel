@@ -804,6 +804,15 @@ static int semctl_nolock(struct ipc_namespace *ns, int semid,
 
 		if (cmd == SEM_STAT) {
 			sma = sem_lock(ns, semid);
+
+                        /*
+                         * Wait until it's guaranteed that no wakeup_sem_queue_do() is ongoing.
+                         */
+                        error = get_queue_result(&queue);
+
+                       /*
+                        * Array removed? If yes, leave without sem_unlock().
+                        */
 			if (IS_ERR(sma))
 				return PTR_ERR(sma);
 			id = sma->sem_perm.id;
@@ -1461,6 +1470,7 @@ SYSCALL_DEFINE4(semtimedop, int, semid, struct sembuf __user *, tsops,
 
 	/*
 	 * If queue.status != -EINTR we are woken up by another process
+         * Leave without unlink_queue(), but with sem_unlock().
 	 */
 
 	if (error != -EINTR) {
