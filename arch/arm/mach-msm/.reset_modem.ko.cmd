@@ -1,0 +1,1 @@
+cmd_arch/arm/mach-msm/reset_modem.ko := /home/sarthak/Downloads/Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/sarthak/Downloads/i9001/Cranium_Kernel/scripts/module-common.lds --build-id -o arch/arm/mach-msm/reset_modem.ko arch/arm/mach-msm/reset_modem.o arch/arm/mach-msm/reset_modem.mod.o

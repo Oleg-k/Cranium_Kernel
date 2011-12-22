@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.35.7
- * Tue Dec 20 13:22:25 2011
+ * Wed Dec 21 16:47:24 2011
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_RING_BUFFER 1
@@ -787,7 +787,7 @@
 #define CONFIG_CRYPTO_ANSI_CPRNG_MODULE 1
 #define CONFIG_NET_SCHED 1
 #define CONFIG_PRINTK_TIME 1
-#define CONFIG_PPP_MODULE 1
+#define CONFIG_PPP 1
 #define CONFIG_NETFILTER_XT_MATCH_QUOTA 1
 #define CONFIG_HAVE_KERNEL_LZO 1
 #define CONFIG_NF_NAT_FTP 1
