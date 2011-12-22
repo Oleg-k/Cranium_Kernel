@@ -34,6 +34,7 @@ static int __sync_filesystem(struct super_block *sb, int wait)
 	 * write out data in the first place
 	 */
 	if (!sb->s_bdi || sb->s_bdi == &noop_backing_dev_info)
+        if (sb->s_bdi == &noop_backing_dev_info)
 		return 0;
 
 	if (sb->s_qcop && sb->s_qcop->quota_sync)
@@ -79,7 +80,7 @@ EXPORT_SYMBOL_GPL(sync_filesystem);
 
 static void sync_one_sb(struct super_block *sb, void *arg)
 {
-	if (!(sb->s_flags & MS_RDONLY) && sb->s_bdi)
+	if (!(sb->s_flags & MS_RDONLY))
 		__sync_filesystem(sb, *(int *)arg);
 }
 /*
@@ -334,7 +335,7 @@ SYSCALL_DEFINE(sync_file_range)(int fd, loff_t offset, loff_t nbytes,
 
 	if (nbytes == 0)
 		endbyte = LLONG_MAX;
-	else
+	elseif (!sb->s_bdi || sb->s_bdi == &noop_backing_dev_info)
 		endbyte--;		/* inclusive */
 
 	ret = -EBADF;
