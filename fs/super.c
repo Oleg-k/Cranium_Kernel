@@ -56,8 +56,7 @@ static struct super_block *alloc_super(struct file_system_type *type)
 			goto out;
 		}
 		INIT_LIST_HEAD(&s->s_files);
-                s->s_bdi = &default_backing_dev_info;
-		INIT_LIST_HEAD(&s->s_instances);
+            	INIT_LIST_HEAD(&s->s_instances);
 		INIT_HLIST_HEAD(&s->s_anon);
 		INIT_LIST_HEAD(&s->s_inodes);
 		INIT_LIST_HEAD(&s->s_dentry_lru);
@@ -918,8 +917,7 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 		goto out_free_secdata;
 	BUG_ON(!mnt->mnt_sb);
 	WARN_ON(!mnt->mnt_sb->s_bdi);
-        WARN_ON(mnt->mnt_sb->s_bdi == &default_backing_dev_info);
-	mnt->mnt_sb->s_flags |= MS_BORN;
+       	mnt->mnt_sb->s_flags |= MS_BORN;
 
 	error = security_sb_kern_mount(mnt->mnt_sb, flags, secdata);
 	if (error)
