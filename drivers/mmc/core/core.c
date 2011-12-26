@@ -493,6 +493,9 @@ int mmc_host_disable(struct mmc_host *host)
 	if (!host->enabled)
 		return 0;
 
+        if (host->rescan_disable != 0)
+        	return 0;
+
 	err = mmc_host_do_disable(host, 0);
 	return err;
 }
