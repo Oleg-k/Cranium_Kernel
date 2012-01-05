@@ -1,0 +1,27 @@
+make clean
+git add arch 
+git add block
+git add crypto
+git add Documentation
+git add drivers
+git add Makefile
+git add firmware
+git add fs
+git add include
+git add init
+git add ipc
+git add kernel
+git add lib
+git add mm
+git add net
+git add samples
+git add scripts -f
+git add security
+git add kernel_make
+git add sound
+git add tools
+git add usr
+git add virt
+git add README
+git commit -m ''
+git push origin 
