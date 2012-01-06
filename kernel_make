@@ -1,2 +1,6 @@
 make -j8
 cp arch/arm/boot/zImage /home/sarthak/Documents
+cp drivers/bluetooth/bthid/bthid.ko /home/sarthak/Documents
+cp drivers/net/tun.ko /home/sarthak/Documents
+cp drivers/param/sec_param.ko /home/sarthak/Documents
+
